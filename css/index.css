@@ -1,0 +1,93 @@
+
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body.category{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+}
+
+ /* MAIN CONTENT */
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align:center;
+    padding:90px 24px 40px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Header */
+.mainNav{
+  position:fixed;
+  top:18px;
+  left:50%;
+  transform:translateX(-50%);
+  display:flex;
+  justify-content:center;
+  pointer-events:none;
+}
+.mainNav h1{pointer-events:auto}
+.mainNav a{
+  text-decoration:none;
+  font-size: 4rem;
+  color: black;
+}
+
+/* Overskrift "categories" */
+h2{
+  font-size: 2rem;
+  margin-bottom: 40px;
+}
+
+
+/* ------------------------------------------ */
+/* INDEX SIDE */
+
+/* Category grid */
+.categoryList{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  justify-items:center;
+  align-items:center;
+  gap: 50px;
+}
+
+/* Individual category link (card) */
+.categoryList a{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  height:120px;
+  width:100%;
+  max-width:300px;
+  padding:18px;
+  text-decoration:none;
+  color: #000000;
+
+}
+
+/* Hover / focus */
+.categoryList a:hover,
+.categoryList a:focus{
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 1px 5px 10px rgb(35, 29, 29);
+}
+
+/* Responsive adjustments */
+@media (max-width:900px){
+  .categoryList{ grid-template-columns:repeat(2, 1fr); gap:18px }
+  .categoryList a{ height:110px; max-width:360px }
+  .mainNav h1 { font-size:40px; margin: -20px 0; }
+}
+@media (max-width:520px){
+  main{ padding-top:70px }
+  .categoryList{ grid-template-columns:1fr; gap:14px }
+  .categoryList a{ height:90px; border-radius:12px; font-size:16px }
+}
+
+
