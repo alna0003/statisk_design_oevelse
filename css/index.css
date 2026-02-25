@@ -1,4 +1,4 @@
-
+/* ------------------------------- */
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%}
 body.category{
@@ -8,9 +8,8 @@ body.category{
 
 }
 
- /* MAIN CONTENT */
 main {
-    max-width: 1200px;
+    max-width: 900px;
     margin: 0 auto;
     text-align:center;
     padding:90px 24px 40px;
@@ -21,15 +20,11 @@ a {
     color: inherit;
 }
 
-/* Header */
 .mainNav{
-  position:fixed;
-  top:18px;
-  left:50%;
-  transform:translateX(-50%);
-  display:flex;
-  justify-content:center;
-  pointer-events:none;
+  position: fixed;
+  top: 0;
+  left: 38%;
+  pointer-events: none;
 }
 .mainNav h1{pointer-events:auto}
 .mainNav a{
@@ -41,11 +36,10 @@ a {
 /* Overskrift "categories" */
 h2{
   font-size: 2rem;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 }
-
-
 /* ------------------------------------------ */
+
 /* INDEX SIDE */
 
 /* Category grid */
@@ -83,11 +77,12 @@ h2{
   .categoryList{ grid-template-columns:repeat(2, 1fr); gap:18px }
   .categoryList a{ height:110px; max-width:360px }
   .mainNav h1 { font-size:40px; margin: -20px 0; }
+  .mainNav {left: 22%; width: 60%; max-width: 900px;
+  }
 }
 @media (max-width:520px){
   main{ padding-top:70px }
   .categoryList{ grid-template-columns:1fr; gap:14px }
   .categoryList a{ height:90px; border-radius:12px; font-size:16px }
 }
-
 
