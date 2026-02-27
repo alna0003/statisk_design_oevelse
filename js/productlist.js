@@ -15,17 +15,17 @@ function showData(data) {
         console.log(element);
         markup += `<a href="product.html">
       <article class="smallProduct onSale soldOut">
-        <img src="https://kea-alt-del.dk/t7/images/webp/640/1525.webp" alt="product image">
-        <h3>Blue T20 Indian Cricket Jersey</h3>
-        <p class="subtle">Tshirts | Nike</p>
-        <p class="price">DKK <span>1299</span>,-</p>
+        <img src="https://kea-alt-del.dk/t7/images/webp/640/${element.id}.webp" alt="product image">
+        <h3>${element.productdisplayname}</h3>
+        <p class="subtle">${element.category} | ${element.brand}</p>
+        <p class="price">DKK <span>${element.price}</span>,-</p>
         <div class="discounted">
           <p>Now DKK <span>974</span>,-</p>
           <p><span>25</span>%</p>
         </div>
       </article>
     </a>`;
-    
+
     });    
     container.innerHTML=markup;
 }
