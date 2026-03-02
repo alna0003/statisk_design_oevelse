@@ -13,7 +13,8 @@ function showData(data) {
     let markup = "";
     data.forEach(element =>{
         console.log(element);
-        markup += `<a href="product.html">
+        markup += `
+        <a href="product.html?fisk=${element.id}">
       <article class="smallProduct onSale soldOut">
         <img src="https://kea-alt-del.dk/t7/images/webp/640/${element.id}.webp" alt="product image">
         <h3>${element.productdisplayname}</h3>
