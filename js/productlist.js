@@ -3,7 +3,7 @@ const kategori = new URLSearchParams (window.location.search).get("category");
 const container = document.querySelector("main");
 
 document.querySelector("h2").textContent = kategori;
-const listContainer = document.querySelector("#productlistMain");
+const listContainer = document.querySelector("#productlistContainer");
 
 const endpoint = `https://kea-alt-del.dk/t7/api/products?category=${kategori}&limit=30`;
 function getData() {
@@ -35,29 +35,27 @@ function showData(data) {
 }
 getData();
 
-// document
-// querySelectorAll("button")
-// .forEach((Knap) => Knap.addEventListener("click", filter));
+document.querySelectorAll("button").forEach(Knap => Knap.addEventListener("click", filter));
 
-// let allData;
+let allData;
 
-// function getData() {
-//   fetch(endpoint)
-//     .then((response) => response.json())
-//     .then((data) => {
-//       allData = data;
-//       showData(allData);
-//     });
-// }
+function getData() {
+  fetch(endpoint)
+    .then((response) => response.json())
+    .then(data => {
+      allData = data;
+      showData(allData);
+    });
+}
 
-// function filter(e) {
-//   const valgt = e.target.textContent;
-//   if (valgt === "All") {
-//     console.log("allData");
-//     showData(allData);
-//   } else {
-//     const udsnit = allData.filter((element) => element.gender == valgt);
-//     console.log(udsnit);
-//     showData(udsnit);
-//   }
-// }
+function filter(e) {
+  const valgt = e.target.textContent;
+  console.log(e.target);
+  if (valgt === "All") {
+    showData(allData);
+  } else {
+    const udsnit = allData.filter((element) => element.gender == valgt);
+    console.log(udsnit);
+    showData(udsnit);
+  }
+}
