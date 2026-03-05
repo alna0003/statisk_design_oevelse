@@ -5,7 +5,7 @@ const container = document.querySelector("main");
 document.querySelector("h2").textContent = kategori;
 const listContainer = document.querySelector("#productlistContainer");
 
-const endpoint = `https://kea-alt-del.dk/t7/api/products?category=${kategori}&limit=30`;
+const endpoint = `https://kea-alt-del.dk/t7/api/products?category=${kategori}&limit=110`;
 function getData() {
 fetch(endpoint).then(res => res.json()).then(showData);
 
@@ -38,6 +38,7 @@ getData();
 document.querySelectorAll("button").forEach(Knap => Knap.addEventListener("click", filter));
 
 let allData;
+let udsnit;
 
 function getData() {
   fetch(endpoint)
@@ -58,4 +59,38 @@ function filter(e) {
     console.log(udsnit);
     showData(udsnit);
   }
+}
+
+
+function filter(e) {
+  const valgt = e.target.textContent;
+  console.log(e.target);
+  if (valgt === "All") {
+    udsnit = allData;
+  } else {
+    udsnit = allData.filter((element) => element.gender == valgt);
+    console.log(udsnit);
+    showData(udsnit);
+  }
+}
+
+// Sortering
+function sorter(e) {
+  if (e.target.dataset.price) {
+    const dir = e.target.dataset.price;
+    if (dir == "up") {
+    udsnit.sort((a, b) => (a.price- b.price));
+  } else {
+    udsnit.sort((a, b) => (b.price - a.price));
+  }
+} else {
+  const dir = e.target.dataset.text;
+  if (dir == "az") {
+    udsnit.sort((a, b) => a.productdisplayname.localeCompare(b.productdisplayname, "da"));
+  } else {
+    udsnit.sort((a, b) => b.productdisplayname.localeCompare(a.productdisplayname, "da"));
+  }
+}
+
+showData(udsnit);
 }
