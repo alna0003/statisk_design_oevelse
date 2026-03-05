@@ -12,7 +12,8 @@ fetch(endpoint).then(res => res.json()).then(showData);
 function showData(data) {
 
         console.log(data);
-        container.innerHTML = `<figure>
+        container.innerHTML = `
+    <figure>
       <img src="https://kea-alt-del.dk/t7/images/webp/640/${data.id}.webp" alt="Produktbillede" class="productImage">
       <span class="saleLabel"></span>
     </figure>

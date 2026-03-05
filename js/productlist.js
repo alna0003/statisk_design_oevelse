@@ -1,9 +1,11 @@
 
 const kategori = new URLSearchParams (window.location.search).get("category");
-
 const container = document.querySelector("main");
 
-const endpoint = `https://kea-alt-del.dk/t7/api/products?category=${kategori}`;
+document.querySelector("h2").textContent = kategori;
+const listContainer = document.querySelector("#productlistMain");
+
+const endpoint = `https://kea-alt-del.dk/t7/api/products?category=${kategori}&limit=30`;
 function getData() {
 fetch(endpoint).then(res => res.json()).then(showData);
 
@@ -15,14 +17,15 @@ function showData(data) {
         console.log(element);
         markup += `
         <a href="product.html?fisk=${element.id}">
-      <article class="smallProduct onSale soldOut">
+      <article class="smallProduct ${element.soldout ? "onSale soldOut" : ""}">
         <img src="https://kea-alt-del.dk/t7/images/webp/640/${element.id}.webp" alt="product image">
         <h3>${element.productdisplayname}</h3>
         <p class="subtle">${element.category} | ${element.brand}</p>
         <p class="price">DKK <span>1299</span>,-</p>
         <div class="discounted">
-          <p>Now DKK <span>${element.price}</span>,-</p>
+          <p>Now DKK <span>${Math.round(element.price - (element.price * element.discount) / 100)}</span>,-</p>
           <p><span>25</span>%</p>
+          ${element.discount ? `<p><span>${element.discount}</span>%</p>` : ""}
         </div>
       </article>
     </a>`;
@@ -30,5 +33,31 @@ function showData(data) {
     });    
     container.innerHTML=markup;
 }
-
 getData();
+
+// document
+// querySelectorAll("button")
+// .forEach((Knap) => Knap.addEventListener("click", filter));
+
+// let allData;
+
+// function getData() {
+//   fetch(endpoint)
+//     .then((response) => response.json())
+//     .then((data) => {
+//       allData = data;
+//       showData(allData);
+//     });
+// }
+
+// function filter(e) {
+//   const valgt = e.target.textContent;
+//   if (valgt === "All") {
+//     console.log("allData");
+//     showData(allData);
+//   } else {
+//     const udsnit = allData.filter((element) => element.gender == valgt);
+//     console.log(udsnit);
+//     showData(udsnit);
+//   }
+// }
